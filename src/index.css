@@ -1,13 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap');
+
+:root {
+  --font-en: 'Outfit', sans-serif;
+  --font-ja: 'Zen Kaku Gothic New', sans-serif;
+  --color-primary: #059669;
+  /* emerald-600 */
+  --color-secondary: #10b981;
+  /* emerald-500 */
+  --color-accent: #84cc16;
+  /* lime-500 */
+  --bg-glass: rgba(255, 255, 255, 0.7);
+  --border-glass: rgba(255, 255, 255, 0.5);
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: var(--font-en);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #000000;
+  color: #1f2937;
+  overflow-x: hidden;
+}
+
+/* Japanese text override */
+:lang(ja) {
+  font-family: var(--font-ja);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Custom Utilities */
+.glass-panel {
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-glass);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Organic Animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+}
+
+.animate-breathe {
+  animation: breathe 4s ease-in-out infinite;
+}
+
+.section-glass {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Aurora Background Effect */
+.animated-aurora {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.15), transparent 60%),
+    radial-gradient(circle at 80% 20%, rgba(132, 204, 22, 0.15), transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(5, 150, 105, 0.15), transparent 50%);
+  filter: blur(60px);
+  animation: aurora-move 20s ease infinite alternate;
+  opacity: 0.6;
+}
+
+@keyframes aurora-move {
+  0% {
+    background-position: 0% 0%;
+    transform: scale(1);
+  }
+
+  100% {
+    background-position: 100% 100%;
+    transform: scale(1.1);
+  }
 }
